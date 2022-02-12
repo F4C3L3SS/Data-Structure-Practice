@@ -32,7 +32,7 @@ namespace Binary_Tree
                 printListElements();
                 return res;
             }
- 
+
             public static void LevelOrderHelper(TreeNode? root, int level)
             {
                 if (root == null)
@@ -56,7 +56,7 @@ namespace Binary_Tree
                 Queue<TreeNode> q = new Queue<TreeNode>();
                 q.Enqueue(root);
 
-                while(q.Count != 0)
+                while (q.Count != 0)
                 {
                     TreeNode tempNode = q.Dequeue();
                     Console.Write(tempNode.data + " ");
@@ -104,7 +104,7 @@ namespace Binary_Tree
 
                 current = root;
 
-                while(current != null)
+                while (current != null)
                 {
                     // if left is null, print current node and go right
                     if (current.left == null)
@@ -120,7 +120,7 @@ namespace Binary_Tree
                         while (prev.right != null && prev.right != current)
                             prev = prev.right; // finding the rightmost element in the left subtree
 
-                        if(prev.right == null)
+                        if (prev.right == null)
                         {
                             prev.right = current; // set the thread from rightmost element to the current (our way to return back)
                             current = current.left; // now we can go left safely withouth losing the current
@@ -176,6 +176,36 @@ namespace Binary_Tree
                 }
             }
 
+            /**
+	         * prints inOrder using stack and inner while loop to
+	         * get to the left most node
+	         * Runtime: O(n) , even though it looks like double loop, it is just 
+	         * going through left elements right away before processing further
+	         */
+            public static void InorderUsingStack(TreeNode root)
+            {
+                Console.WriteLine("\nInorder Using stack");
+                if (root == null)
+                    return;
+
+                Stack<TreeNode> st = new Stack<TreeNode>();
+                TreeNode? curr = root;
+
+                while(curr != null || st.Count > 0)
+                {
+                    // reach to the leftmost node of the subtree
+                    while(curr != null)
+                    {
+                        st.Push(curr);
+                        curr = curr.left;
+                    }
+
+                    curr = st.Pop();
+                    Console.Write(curr.data + " ");
+                    curr = curr.right;
+                }
+            }
+
             public static void Main(String[] args)
             {
                 BinaryTree tree = new BinaryTree();
@@ -188,6 +218,7 @@ namespace Binary_Tree
                 LevelOrderIterative(tree.temp);
                 MorrisThreadedInorderTraversal(tree.temp);
                 MorrisThreadedPreorderTraversal(tree.temp);
+                InorderUsingStack(tree.temp);
             }
         }
     }
