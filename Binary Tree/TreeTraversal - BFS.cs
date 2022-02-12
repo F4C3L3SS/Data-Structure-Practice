@@ -86,6 +86,94 @@ namespace Binary_Tree
                 Console.WriteLine();
             }
 
+            /*
+             * Uses O(1) space and O(n) time
+             * 1. if left is null, print current node and go right
+             * 2. before going left, make right most node on left subtree connected to current node, then go left
+             * 3. if thread is already pointed to current node, then remove the thread
+             */
+            public static void MorrisThreadedInorderTraversal(TreeNode root)
+            {
+                Console.WriteLine("\nMorris Threaded Inorder Traversal: ");
+                TreeNode? current, prev;
+
+                if (root == null)
+                    return;
+
+                current = root;
+
+                while(current != null)
+                {
+                    // if left is null, print current node and go right
+                    if (current.left == null)
+                    {
+                        Console.Write(current.data + " ");
+                        current = current.right;
+                    }
+                    else
+                    {
+                        // before going left, make right most node on left subtree connected to current node, then go left
+
+                        prev = current.left;
+                        while (prev.right != null && prev.right != current)
+                            prev = prev.right; // finding the rightmost element in the left subtree
+
+                        if(prev.right == null)
+                        {
+                            prev.right = current; // set the thread from rightmost element to the current (our way to return back)
+                            current = current.left; // now we can go left safely withouth losing the current
+                        }
+                        else
+                        { // if thread already existed, we need to remove the link now
+                            prev.right = null;
+                            Console.Write(current.data + " "); // we are at root, print it
+                            current = current.right;
+                        }
+                    }
+                }
+            }
+
+            public static void MorrisThreadedPreorderTraversal(TreeNode root)
+            {
+                Console.WriteLine("\nMorris Threaded Preorder Traversal: ");
+                TreeNode? current, prev;
+
+                if (root == null)
+                    return;
+
+                current = root;
+
+                while (current != null)
+                {
+                    // if left is null, print current node and go right
+                    if (current.left == null)
+                    {
+                        Console.Write(current.data + " ");
+                        current = current.right;
+                    }
+                    else
+                    {
+                        // before going left, make right most node on left subtree connected to current node, then go left
+
+                        prev = current.left;
+                        while (prev.right != null && prev.right != current)
+                            prev = prev.right; // finding the rightmost element in the left subtree
+
+                        if (prev.right == null)
+                        {
+                            prev.right = current; // set the thread from rightmost element to the current (our way to return back)
+                            Console.Write(current.data + " ");  // this is the only change, we are printing here only before going left
+                            current = current.left; // now we can go left safely withouth losing the current
+                        }
+                        else
+                        { // if thread already existed, we need to remove the link now
+                            prev.right = null;
+                            current = current.right;
+                        }
+                    }
+                }
+            }
+
             public static void Main(String[] args)
             {
                 BinaryTree tree = new BinaryTree();
@@ -96,6 +184,8 @@ namespace Binary_Tree
                 tree.temp.right.left = new TreeNode(15);
                 LevelOrderRecursive(tree.temp);
                 LevelOrderIterative(tree.temp);
+                MorrisThreadedInorderTraversal(tree.temp);
+                MorrisThreadedPreorderTraversal(tree.temp);
             }
         }
     }
