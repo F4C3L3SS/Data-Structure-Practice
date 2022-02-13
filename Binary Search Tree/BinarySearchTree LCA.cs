@@ -1,6 +1,6 @@
 ﻿/// <summary>
 /// Lowest Common Ancestor
-///     20
+///         20
 ///	    / \
 ///	   8  22
 ///	  / \
