@@ -1,11 +1,11 @@
 ﻿/// <summary>
 /// Lowest Common Ancestor
-///		20
+///     20
 ///	    / \
 ///	   8  22
 ///	  / \
 ///	 4   12
-///		/  \
+///	    /  \
 ///	   10   14
 ///	   
 ///Input: LCA of 10 and 14
