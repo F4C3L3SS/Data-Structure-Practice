@@ -22,8 +22,8 @@
 ///             50                   60
 ///           /    \   delete(50)   /   \
 ///         40      70  ---------> 40    70
-///         /  \                          \ 
-///        60   80                         80
+///                /  \                   \ 
+///               60   80                  80
 ///
 /// Note: Inorder successor is the smallest element(left most element) in the right subtree
 /// Inorder predecessor is the smallest element (leftmost element) in the left subtree
