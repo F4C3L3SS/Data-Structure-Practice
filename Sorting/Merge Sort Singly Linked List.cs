@@ -1,9 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿/// <summary>
+/// Merge Sort on Singly Linked List
+/// 
+/// Divide and conquer just like on an array
+/// 
+/// We divide the linked list until we get single node left (divide using mid)
+/// Start merging the two nodes in a list
+/// 
+/// Time complexity: O(n*log n)
+/// Space complexity: O(log n) [if we use iterative merge]
+/// </summary>
 namespace SearchingAndSorting
 {
     internal class Merge_Sort_Singly_Linked_List
