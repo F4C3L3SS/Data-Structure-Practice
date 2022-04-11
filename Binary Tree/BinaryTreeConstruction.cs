@@ -60,6 +60,9 @@ namespace Binary_Tree
                 TreeNode node = new TreeNode(post[postIdx]);
 
                 int inIndex = mp[node.data];
+                
+                // below condition for postIdx [ postIdx - (inEnd - inIndex) - 1],
+                // we are calculating the number of left nodes
                 node.left = ConstructTreeFromInorderPostorder(arr, post, inStart, inIndex - 1, postIdx - (inEnd - inIndex) - 1);
                 node.right = ConstructTreeFromInorderPostorder(arr, post, inIndex + 1, inEnd, postIdx - 1);
 
