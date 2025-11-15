@@ -26,3 +26,6 @@ function CountingSort(arr: number[]) {
 const arr1 = [4, 2, 2, 3, 1, 6, 4, 6, 9, 9, 6];
 CountingSort(arr1);
 
+
+// Time Complexity: O(N+M) in all cases, where N and M are the size of inputArray[] and countArray[] respectively.
+// Auxiliary Space: O(N+M), where N and M are the space taken by outputArray[] and countArray[] respectively.
