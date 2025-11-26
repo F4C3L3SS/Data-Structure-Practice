@@ -128,15 +128,17 @@ export class SinglyLinkedList<T> {
     }
 
     // find by predicate
-    find(predicate: (val: T) => boolean): T | null {
+    find(predicate: (val: T) => boolean): number | null {
         let cur = this.head;
+        let idx = 0;
 
         while (cur) {
-            if (predicate(cur.value)) return cur.value;
+            if (predicate(cur.value)) return idx;
             cur = cur.next;
+            idx++;
         }
 
-        return null;
+        return -1;
     }
 
     // reverse list in-place O(n)
@@ -191,4 +193,8 @@ s.print();
 s.push(44);
 s.push(123);
 s.reverse();
+s.push(123);
 s.print();
+
+console.log(s.find(v => v === 123));
+
