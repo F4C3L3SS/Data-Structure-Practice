@@ -1,21 +1,21 @@
-class ListNode {
+class ListNodeM2 {
     val: number;
-    next: ListNode | null;
+    next: ListNodeM2 | null;
     
-    constructor(val?: number, next?: ListNode | null) {
+    constructor(val?: number, next?: ListNodeM2 | null) {
         this.val = val ?? 0;
         this.next = next ?? null;
     }
 }
 
 // time complexit - O(N + M). n and m are lengths of 2 linked list
-function mergeSortedList(list1: ListNode | null, list2: ListNode | null): ListNode | null {
+function mergeSortedListM2(list1: ListNodeM2 | null, list2: ListNodeM2 | null): ListNodeM2 | null {
 
     if (!list1) return list2;
     if (!list2) return list1;
     
-    let head : ListNode | null = null;
-    let current: ListNode | null = null;
+    let head : ListNodeM2 | null = null;
+    let current: ListNodeM2 | null = null;
 
     // pick the smallest first node to be head
     if (list1.val < list2.val) {
@@ -48,23 +48,23 @@ function mergeSortedList(list1: ListNode | null, list2: ListNode | null): ListNo
 }
 
 
-function recurseMergeSortedList(list1: ListNode | null, list2: ListNode | null): ListNode | null {
+function recurseMergeSortedListM2(list1: ListNodeM2 | null, list2: ListNodeM2 | null): ListNodeM2 | null {
 
     if (list1 === null) return list2; // first list is empty
     if (list2 === null) return list1; // second list is empty
 
     if (list1.val < list2.val) {
-        list1.next = recurseMergeSortedList(list1.next, list2);
+        list1.next = recurseMergeSortedListM2(list1.next, list2);
         return list1;
     } else {
-        list2.next = recurseMergeSortedList(list1, list2.next);
+        list2.next = recurseMergeSortedListM2(list1, list2.next);
         return list2;
     }
 }
 
-function printResultingList(head: ListNode | null) {
+function printResultingListM2(head: ListNodeM2 | null) {
 
-    let curr: ListNode|null = head, result = '';
+    let curr: ListNodeM2|null = head, result = '';
     while (curr !== null) {
         result += curr.val + `->`;
         curr = curr?.next;
@@ -73,12 +73,12 @@ function printResultingList(head: ListNode | null) {
     console.log(result);
 }
 
-const l1 = new ListNode(1, new ListNode(2, new ListNode(4)));
-const l2 = new ListNode(1, new ListNode(3, new ListNode(4)));
+const l1 = new ListNodeM2(1, new ListNodeM2(2, new ListNodeM2(4)));
+const l2 = new ListNodeM2(1, new ListNodeM2(3, new ListNodeM2(4)));
 
-// const head = mergeSortedList(l1, l2);
-// printResultingList(head);
+// const head = mergeSortedListM2(l1, l2);
+// printResultingListM2(head);
 
-const head1 = mergeSortedList(l1, l2);
-printResultingList(head1);
+const head1 = mergeSortedListM2(l1, l2);
+printResultingListM2(head1);
 
