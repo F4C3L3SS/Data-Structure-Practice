@@ -26,7 +26,7 @@
 ///               60   80                  80
 ///
 /// Note: Inorder successor is the smallest element(left most element) in the right subtree
-/// Inorder predecessor is the smallest element (leftmost element) in the left subtree
+/// Inorder predecessor is the largest element (leftmost element) in the left subtree
 /// </summary>
 namespace Binary_Search_Tree
 {
