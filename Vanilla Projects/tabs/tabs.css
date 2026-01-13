@@ -1,0 +1,20 @@
+.btn-tabs1.active {
+    background: rgb(162, 59, 209);
+    color: white;
+}
+
+.btn-tabs1 {
+    color: #333;
+    background: white;
+}
+
+.btn-tabs1:hover {
+    color: red;
+}
+
+.btn-tabs1.active:hover {
+    color: white;
+}
+.hidden {
+    display: none;
+}
