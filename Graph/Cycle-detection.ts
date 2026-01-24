@@ -29,6 +29,15 @@ function detectCycleUndirected(adj: number[][]): boolean {
     return false;
 }
 
+const adj1: number[][] = [
+  [1, 2], // 0
+  [0, 2], // 1
+  [1, 0], // 2
+];
+
+const hasCycle1 = detectCycleUndirected(adj1);
+console.log("Undirected Graph has cycle:", hasCycle1);
+
 // From node, for every neighbor
 // - if node is found in visited and path arrays, cycle exists
 // visited - node has been seen before
@@ -65,3 +74,13 @@ function detectCycleDirected(adj: number[][]): boolean {
 
     return false;
 }
+
+const adj: number[][] = [
+  [1], // 0
+  [2], // 1
+  [3], // 2
+  [0], // 3
+];
+
+const hasCycle = detectCycleDirected(adj);
+console.log("Directed graph has cycle:", hasCycle);
