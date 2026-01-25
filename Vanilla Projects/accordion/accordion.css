@@ -1,0 +1,15 @@
+.accordion-icon::before {
+  content: "\F286";
+  font-family: "bootstrap-icons";
+  font-size: 16px;
+  display: inline-block;
+  transition: transform 0.3s ease;
+}
+
+.hidden {
+    display: none;
+}
+
+.accordion-header.active .accordion-icon::before {
+  transform: rotate(180deg);
+}
